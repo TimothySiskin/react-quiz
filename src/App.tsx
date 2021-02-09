@@ -18,6 +18,10 @@ const App = () => {
       </button>
       <p className="score">Score:</p>
       <p>Loading Questions ...</p>
+      <QuestionCard />
+      <button className="next" onClick={nextQuestion}>
+        Next Question
+      </button>
     </div>
   );
 };
