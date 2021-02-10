@@ -8,5 +8,5 @@ export const fetchQuizQuestions = async (
   amount: number,
   difficulty: Difficulty
 ): Promise<[]> => {
-  const endpoint = `http://`;
+  const endpoint = `http://opnetdb.com/api.php?amount=${amount}&difficulty=${difficulty}&type=multiple`;
 };
