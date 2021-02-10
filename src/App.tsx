@@ -2,6 +2,8 @@ import React, { useState } from "react";
 //Components
 import QuestionCard from "./components/QuestionCard";
 
+const TOTAL_Questions = 10;
+
 const App = () => {
   //State
 
@@ -27,7 +29,14 @@ const App = () => {
       </button>
       <p className="score">Score:</p>
       <p>Loading Questions ...</p>
-      <QuestionCard questionNum={number + 1} totalQuestions={} />
+      <QuestionCard
+        questionNum={number + 1}
+        totalQuestions={TOTAL_Questions}
+        question={questions[number].question}
+        answers={question[number].answers}
+        userAnswer={userAnswers ? userAnswers[number] : undefined}
+        callback={checkAnswer}
+      />
       <button className="next" onClick={nextQuestion}>
         Next Question
       </button>
