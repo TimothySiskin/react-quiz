@@ -4,7 +4,7 @@ import React from "react";
 
 type Props = {
   question: string;
-  answer: string[];
+  answers: string[];
   callback: any;
   userAnswer: string;
   questionNum: number;
@@ -13,13 +13,21 @@ type Props = {
 
 const QuestionCard: React.FC<Props> = ({
   question,
-  answer,
+  answers,
   callback,
   userAnswer,
   questionNum,
   totalQuestions,
 }) => {
-  return <div className="">Question Card</div>;
+  return (
+    <div className="">
+      <p className="number">
+        Question: {questionNum} / {totalQuestions}
+      </p>
+      <p dangerouslySetInnerHTML={{ __html: question }} />
+      <div></div>
+    </div>
+  );
 };
 
 export default QuestionCard;
