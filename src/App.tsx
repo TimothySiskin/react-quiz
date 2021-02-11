@@ -5,7 +5,7 @@ import QuestionCard from "./components/QuestionCard";
 //Types
 import { QuestionState, Difficulty } from "./API";
 //Styles
-import { GlobalStyle } from "./app.styles";
+import { GlobalStyle, Wrapper } from "./app.styles";
 
 export type AnswerObject = {
   question: string;
@@ -82,7 +82,7 @@ const App = () => {
   return (
     <>
       <GlobalStyle />
-      <div className="App">
+      <Wrapper>
         <h1>REACT QUIZ</h1>
         {gameOver || userAnswers.length === TOTAL_Questions ? (
           <button className="start" onClick={startTrivia}>
@@ -109,7 +109,7 @@ const App = () => {
               Next Question
             </button>
           )}
-      </div>
+      </Wrapper>
     </>
   );
 };
