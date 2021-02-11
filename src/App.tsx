@@ -66,7 +66,16 @@ const App = () => {
     }
   };
 
-  const nextQuestion = () => {};
+  const nextQuestion = () => {
+    //Move to the next question if not the last question
+    const nextQuestion = number + 1;
+
+    if (nextQuestion === TOTAL_Questions) {
+      setGameOver(true);
+    } else {
+      setNumber(nextQuestion);
+    }
+  };
   //Render
   return (
     <div className="App">
@@ -76,7 +85,7 @@ const App = () => {
           START
         </button>
       ) : null}
-      {gameOver === false ? <p className="score">Score:</p> : null}
+      {gameOver === false ? <p className="score">Score: {score}</p> : null}
       {loading ? <p>Loading Questions ...</p> : null}
       {!loading && !gameOver && (
         <QuestionCard
