@@ -7,6 +7,8 @@ export type Question = {
   incorrect_answer: string[];
 };
 
+export type QuestionSatate = Question & { answers: string[] };
+
 export enum Difficulty {
   EASY = "easy",
   MEDIUM = "medium",
