@@ -27,7 +27,7 @@ const App = () => {
 
   //Functions
 
-  console.log(questions);
+  //console.log(questions);
 
   const startTrivia = async () => {
     setLoading(true);
@@ -69,9 +69,14 @@ const App = () => {
           callback={checkAnswer}
         />
       )}
-      <button className="next" onClick={nextQuestion}>
-        Next Question
-      </button>
+      {!gameOver &&
+        !loading &&
+        userAnswers.length === number + 1 &&
+        number !== TOTAL_Questions - 1 && (
+          <button className="next" onClick={nextQuestion}>
+            Next Question
+          </button>
+        )}
     </div>
   );
 };
