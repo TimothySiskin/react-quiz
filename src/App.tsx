@@ -21,7 +21,7 @@ const App = () => {
   const [loading, setLoading] = useState(false);
   const [questions, setQuestions] = useState<QuestionState[]>([]);
   const [number, setNumber] = useState(0);
-  const [userAnswers, setUserAnswers] = useState([]);
+  const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([]);
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(true);
 
@@ -45,7 +45,26 @@ const App = () => {
     setLoading(false);
   };
 
-  const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {};
+  const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (!gameOver) {
+      //user answer
+      const answer = e.currentTarget.value;
+      //Chceck aswer is correct answer
+      const correct = questions[number].correct_answer === answer;
+      //Add Score if answer is correct
+      if (correct) {
+        setScore((prev) => prev + 1);
+      }
+      //Save answer in the array user answer
+      const answerObject: AnswerObject = {
+        question: questions[number].question,
+        answer: answer,
+        correct: correct,
+        correctAnswer: questions[number].correct_answer,
+      };
+      setUserAnswers((prev) => [...prev, answerObject]);
+    }
+  };
 
   const nextQuestion = () => {};
   //Render
