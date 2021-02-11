@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { fetchQuizQuestions } from "./API";
 //Components
 import QuestionCard from "./components/QuestionCard";
+//Types
+import { Difficulty } from "./API";
 
 const TOTAL_Questions = 10;
 
@@ -16,6 +18,7 @@ const App = () => {
   const [gameOver, setGameOver] = useState(true);
 
   //Functions
+
   const startTrivia = async () => {};
 
   const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {};
