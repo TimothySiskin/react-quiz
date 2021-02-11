@@ -3,7 +3,7 @@ import { fetchQuizQuestions } from "./API";
 //Components
 import QuestionCard from "./components/QuestionCard";
 //Types
-import { Difficulty } from "./API";
+import { QuestionState, Difficulty } from "./API";
 
 const TOTAL_Questions = 10;
 
