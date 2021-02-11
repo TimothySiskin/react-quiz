@@ -18,7 +18,7 @@ const TOTAL_Questions = 10;
 const App = () => {
   //State
 
-  const [loding, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [questions, setQuestions] = useState<QuestionState[]>([]);
   const [number, setNumber] = useState(0);
   const [userAnswers, setUserAnswers] = useState([]);
@@ -52,19 +52,23 @@ const App = () => {
   return (
     <div className="App">
       <h1>REACT QUIZ</h1>
-      <button className="start" onClick={startTrivia}>
-        START
-      </button>
-      <p className="score">Score:</p>
-      <p>Loading Questions ...</p>
-      <QuestionCard
-        questionNum={number + 1}
-        totalQuestions={TOTAL_Questions}
-        question={questions[number].question}
-        answers={questions[number].answers}
-        userAnswer={userAnswers ? userAnswers[number] : undefined}
-        callback={checkAnswer}
-      />
+      {gameOver || userAnswers.length === TOTAL_Questions ? (
+        <button className="start" onClick={startTrivia}>
+          START
+        </button>
+      ) : null}
+      {gameOver === false ? <p className="score">Score:</p> : null}
+      {loading ? <p>Loading Questions ...</p> : null}
+      {!loading && !gameOver && (
+        <QuestionCard
+          questionNum={number + 1}
+          totalQuestions={TOTAL_Questions}
+          question={questions[number].question}
+          answers={questions[number].answers}
+          userAnswer={userAnswers ? userAnswers[number] : undefined}
+          callback={checkAnswer}
+        />
+      )}
       <button className="next" onClick={nextQuestion}>
         Next Question
       </button>
