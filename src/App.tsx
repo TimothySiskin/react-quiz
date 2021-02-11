@@ -27,7 +27,23 @@ const App = () => {
 
   //Functions
 
-  const startTrivia = async () => {};
+  console.log(questions);
+
+  const startTrivia = async () => {
+    setLoading(true);
+    setGameOver(false);
+
+    const newQuestions = await fetchQuizQuestions(
+      TOTAL_Questions,
+      Difficulty.EASY
+    );
+
+    setQuestions(newQuestions);
+    setScore(0);
+    setUserAnswers([]);
+    setNumber(0);
+    setLoading(false);
+  };
 
   const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {};
 
@@ -45,7 +61,7 @@ const App = () => {
         questionNum={number + 1}
         totalQuestions={TOTAL_Questions}
         question={questions[number].question}
-        answers={question[number].answers}
+        answers={questions[number].answers}
         userAnswer={userAnswers ? userAnswers[number] : undefined}
         callback={checkAnswer}
       />
