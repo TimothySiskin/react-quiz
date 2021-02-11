@@ -5,13 +5,21 @@ import QuestionCard from "./components/QuestionCard";
 //Types
 import { QuestionState, Difficulty } from "./API";
 
+type AnswerObject = {
+  question: string;
+  answer: string;
+  correct: boolean;
+  correctAnswer: string;
+};
+
+//Variables
 const TOTAL_Questions = 10;
 
 const App = () => {
   //State
 
   const [loding, setLoading] = useState(false);
-  const [questions, setQuestions] = useState([]);
+  const [questions, setQuestions] = useState<QuestionState[]>([]);
   const [number, setNumber] = useState(0);
   const [userAnswers, setUserAnswers] = useState([]);
   const [score, setScore] = useState(0);
